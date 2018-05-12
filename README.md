@@ -48,7 +48,7 @@ When we `source()` the "module.R" script, the IIFE is execuated and returns the 
 
 **Now a critical part:**
 
-To make that environment object readily accessible within the "main.R" script, we must create a binding between a symbol and the `value` property of the `source()` output. This is because the IIFE from `source()` returns a list with two elements: `value`, which is the content of the `source()`-d script, and `visible`, a boolean (logical) value for the "visibility" of the `value`.
+To make that environment object readily accessible within the "main.R" script, we must create a binding between a symbol and the `value` property of the `source()` output. This is because the `source()` call returns a list with two elements: `value`, which is the content of the `source()`-d script (the IIFE in our case), and `visible`, a boolean (logical) value for the "visibility" of the `value`.
 
 Look at the following code chunk illustrating how to "import" the module into "main.R" to use:
 
@@ -62,7 +62,7 @@ module$bar()  # this will print "bar"
 
 Once the module is "imported" into the "main.R" workspace, it is easy to use its functions.
 
-Sometimes you might want to use a function without the `module$` prefix. In fact, that is what a tranditional use of `source()` without IIFE would do. But if you already have a module script with IIFE *and* only want to use a specific function in the module, there is nothing stopping you from getting what you want! Just do the following:
+Sometimes you might want to use a function without the `module$` prefix. In fact, that is what a traditional use of `source()` without IIFE would do. But if you already have a module script with IIFE *and* only want to use a specific function in the module, there is nothing stopping you from getting what you want! Just do the following:
 
 ```r
 foo <- source("module.R")$value$foo
