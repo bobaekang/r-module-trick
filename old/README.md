@@ -1,4 +1,4 @@
-*Note: The current directory provides an old version of the trick and its explanation. See [here](..) for the updated version.*
+*Note: The current directory provides an old version of the trick and its explanation. See [here](https://github.com/bobaekang/r-module-trick) for the updated version.*
 
 # A simple trick to use modules in R
 This repository is created to illustrate a simple trick to mimic using modules in R like in Python or JavaScript.
