@@ -1,4 +1,22 @@
+# R module trick
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 *Note: This module trick originally used environment rather than list, but I came to a conclusion that the list syntax is simpler, more beginner friendly, and easier to take a peak into the `source()` output. The current README is much more expanded, too. If you are curious about the original trick, go to [`/old`](./old).*
+
+## Table of contents
+
+* [Summary](#summary)
+* [Main](#summary)
+  * [Motivation](#motivation)
+  * [The trick](#the-trick)
+  * [Tips for using modules](#tips-for-using-modules)
+  * [A caveat](#a-caveat)
+  * (NEW) [TinyURL for using files in this repository](#tinyurl-for-using-files-in-this-repository)
+  * (NEW) [`import_module` function](#import_module-function)
+  * [TL;DR](#tldr)
+  * [Resources](#resources)
+* [License](#license)
 
 ## Summary
 A simple trick to mimic using modules in R like in Python or JavaScript.
@@ -153,7 +171,7 @@ search()
 ####  Tip 3
 Did you know that `source()` can also take a URL for the `file` argument? This means that you can `source()` a module script from an online location, say, a GitHub repository:
 ```r
-url <- "https://raw.githubusercontent.com/bobaekang/r-module-trick/master/module.R"
+url <- "https://tinyurl.com/r-module-trick/module.R"
 module <- source(url)$value
 attach(module)
 
@@ -171,6 +189,36 @@ If you are importing external packages within your module script, please note th
 
 Again, the trick introduced here is just that: a *trick*. Use it as you deem fit. However, if you are looking for a more robust and elaborate solution, please try existing packages designed to support the module pattern in R or simply create your own package. 
 
+### TinyURL for using files in this repository
+
+`https://tinyurl.com/r-module-trick/*` is now redirected to `https://raw.githubusercontent.com/bobaekang/r-module-trick/master/*`.
+
+
+### `import_module` function
+
+To make it easier to use custom R modules, a new `import_module()` is added to this repository. To use `import_module()`, first `source()` the `./import_module.R` file in this repository.
+
+```r
+source("https://tinyurl.com/r-module-trick/import_module.R")
+```
+
+Running `./import_module.R` adds to your global environment the following two functions:
+
+* `import_module()` to import an R module
+* `import_module_help()` to display documentation for `import_module()`
+
+In essense, `import_module()` is a thin wrapper over `source()` but with the following convenience features:
+
+* Setting `attached = TRUE` (default) will automatically attach the module to the search path. Alternatively, `attached = FALSE` will automatically create an R object in the global environment.
+* If `name` is missing (default), `import_module()` will use the R file name as the module name when attaching it to the search path or creating an object in the global environment. If `name` is provided, its value will be used.
+
+Please use the documentation for quick reference.
+
+```r
+# see documentation for import_module
+import_module_help()
+```
+
 ### TL;DR
 * Use IIFE that returns a list to quickly create your custom R module!
 
@@ -178,3 +226,9 @@ Again, the trick introduced here is just that: a *trick*. Use it as you deem fit
 * ["klmr/modules" package Github repository](https://github.com/klmr/modules)
 * [*R Packages*](http://r-pkgs.had.co.nz/) by Hadley Wickham
 * ["wahani/modules" package Github repository](https://github.com/wahani/modules)
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2019 Bobae Kang
