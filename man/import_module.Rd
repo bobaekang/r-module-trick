@@ -4,15 +4,15 @@
 \alias{import_module}
 \title{Import an R "module"}
 \usage{
-import_module(path, name, attached = TRUE)
+import_module(path, name, attach = TRUE)
 }
 \arguments{
 \item{path}{A character string for the path to a module file.}
 
 \item{name}{A character string for an optional module name.}
 
-\item{attached}{A logical value. If TRUE, module is attached to the search
-path. If FALSE, a module object is created in the global environment.}
+\item{attach}{A logical value. If \code{TRUE}, attach module to the search
+path. If \code{FALSE}, create a module object in the global environment.}
 }
 \description{
 Import a "module" from \code{path} using an optional \code{name}.

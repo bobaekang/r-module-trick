@@ -209,7 +209,7 @@ Running `./import_module.R` adds to your global environment the following two fu
 
 In essense, `import_module()` is a thin wrapper over `source()` but with the following convenience features:
 
-* Setting `attached = TRUE` (default) will automatically attach the module to the search path. Alternatively, `attached = FALSE` will automatically create an R object in the global environment.
+* Setting `attach = TRUE` (default) will automatically attach the module to the search path. Alternatively, `attach = FALSE` will automatically create an R object in the global environment.
 * If `name` is missing (default), `import_module()` will use the R file name as the module name when attaching it to the search path or creating an object in the global environment. If `name` is provided, its value will be used.
 
 Please use the documentation for quick reference.

@@ -8,8 +8,8 @@
 #' 
 #' @param path A character string for the path to a module file.
 #' @param name A character string for an optional module name.
-#' @param attached A logical value. If TRUE, module is attached to the search
-#'   path. If FALSE, a module object is created in the global environment.
+#' @param attach A logical value. If \code{TRUE}, attach module to the search
+#'   path. If \code{FALSE}, create a module object in the global environment.
 #' @seealso \code{\link[base]{attach}} for attaching R object to search path.
 #' @seealso \code{\link[base]{assign}} for assigning a value to name.
 #' @examples
@@ -19,7 +19,7 @@
 #' # import a remote module file with an optional name
 #' path <- "https://tinyurl.com/r-module-trick/module.R"
 #' import_module(path = path, name = "module_example")
-import_module <- function(path, name, attached = TRUE) {
+import_module <- function(path, name, attach = TRUE) {
   
   if (missing(path))
     stop("argument 'path' missing")
@@ -27,8 +27,8 @@ import_module <- function(path, name, attached = TRUE) {
   if (!grepl("\\.R$", path))
     stop ("argument 'path' not an R file")
   
-  if (!is.logical(attached))
-    stop("argument 'attached' not logical")
+  if (!is.logical(attach))
+    stop("argument 'attach' not logical")
 
   if (missing(name)) {
     flatsplit <- function(str, ...) unlist(strsplit(str, ...))
@@ -36,7 +36,7 @@ import_module <- function(path, name, attached = TRUE) {
     name <- head(flatsplit(filename, '\\.'), -1)
   }
   
-  if (attached) {
+  if (attach) {
     mod_name <- paste0("module:", name)
     
     if (mod_name %in% search())
