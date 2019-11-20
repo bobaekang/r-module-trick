@@ -1,3 +1,7 @@
+> ### IMPORTANT NOTICE
+>
+> This repository is archived and no longer maintained. Please go to [github.com/bobaekang/r-module](https://github.com/bobaekang/r-module) to see the updated version of R module trick, which no longer relies on IIFE.
+
 # R module trick
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
